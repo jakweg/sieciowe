@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  first:
+    image: gcc:13.2.0 
+    working_dir: /project
+    entrypoint: sleep inf
+    volumes:
+      - ./src:/project:rw
+    networks:
+      - shared
+
+  second:
+    image: gcc:13.2.0 
+    working_dir: /project
+    entrypoint: sleep inf
+    volumes:
+      - ./src:/project:rw
+    networks:
+      - shared
+
+networks:
+  shared:
+    driver: bridge
